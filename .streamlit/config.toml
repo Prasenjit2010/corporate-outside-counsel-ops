@@ -1,0 +1,21 @@
+[server]
+# Bind to this computer only; the app is not reachable from the network.
+address = "localhost"
+port = 8501
+headless = true
+
+[browser]
+# No usage statistics are sent to Streamlit.
+gatherUsageStats = false
+serverAddress = "localhost"
+
+[client]
+toolbarMode = "minimal"
+
+[theme]
+base = "light"
+primaryColor = "#14284B"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F4F6F9"
+textColor = "#0E1726"
+font = "sans serif"

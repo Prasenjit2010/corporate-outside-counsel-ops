@@ -1,0 +1,33 @@
+[project]
+name = "counselgrid"
+version = "1.0.0"
+description = "CounselGrid: Enterprise Outside Counsel & Conflict Governance System"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "streamlit>=1.45,<2",
+    "plotly>=5.22,<7",
+    "pandas>=2.2,<3",
+    "rapidfuzz>=3.9,<4",
+    "psycopg[binary]>=3.2,<4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
