@@ -1,13 +1,10 @@
 [server]
-# Bind to this computer only; the app is not reachable from the network.
-address = "localhost"
 port = 8501
 headless = true
 
 [browser]
 # No usage statistics are sent to Streamlit.
 gatherUsageStats = false
-serverAddress = "localhost"
 
 [client]
 toolbarMode = "minimal"
