@@ -64,9 +64,9 @@ def _composition_chart(ranked: list[ScreeningResult]) -> go.Figure:
         )
     fig.update_layout(
         barmode="stack",
-        title="Score composition, top 10 eligible firms",
+        title="Score breakdown, top 10",
         height=max(260, 34 * len(top) + 90),
-        xaxis=dict(title="Governance score (0-100)", range=[0, 100]),
+        xaxis=dict(range=[0, 100]),
         yaxis=dict(automargin=True),
     )
     return fig
