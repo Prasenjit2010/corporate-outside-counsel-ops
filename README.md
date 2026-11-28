@@ -2,6 +2,10 @@
 
 **Enterprise Outside Counsel & Conflict Governance System**
 
+### ▶ [Try the live demo: counselgrid.streamlit.app](https://counselgrid.streamlit.app)
+
+*No installation needed. The demo runs on fictional sample data. Try the counterparty **Ironbridge Packaging** on the first tab. If the app has been idle, click "wake up" and give it about 30 seconds.*
+
 CounselGrid is an internal legal-operations platform for an in-house legal department. It runs matter intake, screens every outside firm on the panel against a conflict registry, ranks the eligible firms with a published weighting, and records each engagement decision in an audit log. It runs on Supabase (PostgreSQL with Row-Level Security) or, with no setup, on a local SQLite file.
 
 > **Governance boundary.** CounselGrid is a B2B legal-operations tool. It does not provide legal advice, does not predict case outcomes and is not offered to the public. Conflict findings, waivers and engagement decisions remain the responsibility of licensed attorneys and the organization's ethics counsel.
