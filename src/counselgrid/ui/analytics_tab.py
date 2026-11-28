@@ -41,7 +41,7 @@ def _spend_chart(matters: pd.DataFrame) -> go.Figure:
         )
     fig.update_layout(
         barmode="stack",
-        title="Legal spend to date by department",
+        title="Spend by department",
         height=330,
         xaxis=dict(tickprefix="$", tickformat="~s"),
     )
@@ -52,27 +52,30 @@ def _afa_chart(matters: pd.DataFrame) -> go.Figure:
     savings = analytics.afa_savings(matters)
     labels = [t if len(t) <= 38 else t[:36] + "…" for t in savings["matter_title"]]
     fig = go.Figure()
+    labels = labels[::-1]
     fig.add_bar(
-        x=labels,
-        y=savings["hourly_equivalent_usd"],
+        y=labels,
+        x=savings["hourly_equivalent_usd"][::-1],
         name="Hourly-equivalent cost",
+        orientation="h",
         marker_color=SLATE_LIGHT,
-        hovertemplate="%{x}<br>Hourly equivalent %{y:$,.0f}<extra></extra>",
+        hovertemplate="%{y}<br>Hourly equivalent %{x:$,.0f}<extra></extra>",
     )
     fig.add_bar(
-        x=labels,
-        y=savings["actual_spend_usd"],
+        y=labels,
+        x=savings["actual_spend_usd"][::-1],
         name="Actual AFA spend",
+        orientation="h",
         marker_color=NAVY,
-        customdata=savings["savings_pct"],
-        hovertemplate="%{x}<br>Actual %{y:$,.0f}<br>Saved %{customdata:.0%}<extra></extra>",
+        customdata=savings["savings_pct"][::-1],
+        hovertemplate="%{y}<br>Actual %{x:$,.0f}<br>Saved %{customdata:.0%}<extra></extra>",
     )
     fig.update_layout(
         barmode="group",
-        title="Closed AFA matters: actual spend vs. hourly equivalent",
-        height=360,
-        yaxis=dict(tickprefix="$", tickformat="~s"),
-        xaxis=dict(tickangle=-25, automargin=True),
+        title="AFA savings on closed matters",
+        height=48 * len(labels) + 140,
+        xaxis=dict(tickprefix="$", tickformat="~s"),
+        yaxis=dict(automargin=True),
     )
     return fig
 
@@ -101,7 +104,7 @@ def _cyber_chart(firms: pd.DataFrame) -> go.Figure:
         annotation_position="top",
     )
     fig.update_layout(
-        title="Cybersecurity compliance score by firm",
+        title="Cyber score by firm",
         height=24 * len(data) + 110,
         xaxis=dict(range=[50, 100]),
         yaxis=dict(automargin=True),
@@ -125,9 +128,7 @@ def _rate_chart(firms: pd.DataFrame) -> go.Figure:
             text=part["firm_name"],
             hovertemplate="%{text}<br>%{y:$,.0f}/hr<extra></extra>",
         )
-    fig.update_layout(
-        title="Blended hourly rate benchmark by tier", height=330, showlegend=False, yaxis=dict(tickprefix="$")
-    )
+    fig.update_layout(title="Hourly rate by firm tier", height=330, showlegend=False, yaxis=dict(tickprefix="$"))
     return fig
 
 
