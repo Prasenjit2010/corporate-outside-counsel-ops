@@ -84,19 +84,19 @@ def register_plotly_template() -> None:
             paper_bgcolor="#FFFFFF",
             plot_bgcolor="#FFFFFF",
             colorway=[NAVY, NAVY_MID, SLATE_LIGHT, SLATE, "#7C93B5"],
-            margin=dict(l=8, r=8, t=78, b=8),
+            margin=dict(l=8, r=8, t=44, b=8),
             title=dict(
                 font=dict(size=13, color=INK),
-                x=0,
+                x=0.01,
                 xanchor="left",
-                xref="paper",
+                xref="container",
                 y=0.985,
                 yanchor="top",
                 yref="container",
             ),
             xaxis=dict(gridcolor="#EDF0F4", linecolor=RULE, zerolinecolor=RULE, ticks=""),
             yaxis=dict(gridcolor="#EDF0F4", linecolor=RULE, zerolinecolor=RULE, ticks=""),
-            legend=dict(orientation="h", yanchor="bottom", y=1.02, x=0, title_text=""),
+            legend=dict(orientation="h", yanchor="top", y=-0.12, x=0, title_text=""),
             hoverlabel=dict(bgcolor="#FFFFFF", bordercolor=RULE, font=dict(color=INK)),
         )
     )
